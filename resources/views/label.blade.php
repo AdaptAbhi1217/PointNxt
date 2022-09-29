@@ -11,47 +11,54 @@
     <title>Label Creation</title>
 </head>
 <body>
-    <h1>Label Creation</h1>
-    <div class="mr-5 align-items-center">
-        <form class = "m-5" method="GET">
-            <div class="mb-3">
+    <div class="m-5 shadow p-4 mb-4 bg-white ">
+        <h1>Label Creation</h1>
+        <div class="col-md-6 mb-5">
+            <div class="form-group">
+                <form>
+                    @csrf
+                    <label for="orderId" class="form-label">Order Id</label>
+                    <input type="number" class = "form-control" name="orderId"/>
 
-                <label for="carrier" class="form-label">Carrier Code</label>
-                <input type="number" class = "form-control" name="carrier">
+                    <label for="carrier" class="form-label">Carrier Code</label>
+                    <input type="text" class = "form-control" name="carrier"/>
 
-                <label for="service" class="form-label">Service Code</label>
-                <input type="number" class = "form-control" name="service">
+                    <label for="service" class="form-label">Service Code</label>
+                    <input type="text" class = "form-control" name="service"/>
 
-                <label for="package" class="form-label">Package Code</label>
-                <input type="number" class = "form-control" name="package">
+                    <label for="package" class="form-label">Package Code</label>
+                    <input type="text" class = "form-control" name="package"/>
 
-                <label for="confirmation" class="form-label">Confirmation</label>
-                <input type="number" class = "form-control" name="confirmation">
+                    <label for="confirmation" class="form-label">Confirmation</label>
+                    <input type="text" class = "form-control" name="confirmation"/>
 
-                <label for="shipDate" class="form-label">Ship Date</label>
-                <input type="number" class = "form-control" name="shipDate">
+                    <label for="shipDate" class="form-label">Ship Date</label>
+                    <input type="date" class = "form-control" name="shipDate"/>
 
-                <label for="weight_value" class="form-label">Weight - Value</label>
-                <input type="number" class = "form-control" name="weight_value">
+                    <label for="weight_value" class="form-label">Weight - Value</label>
+                    <input type="number" class = "form-control" name="weight_value"/>
 
-                <label for="weight_units" class="form-label">Weight - Units</label>
-                <input type="number" class = "form-control" name="weight_units">
+                    <label for="weight_units" class="form-label">Weight - Units</label>
+                    <input type="number" class = "form-control" name="weight_units"/>
 
-                <label for="dimension_units" class="form-label">Dimension Units</label>
-                <input type="number" class = "form-control" name="dimension_units">
+                    <label for="dimension_units" class="form-label">Dimension Units</label>
+                    <input type="number" class = "form-control" name="dimension_units"/>
 
-                <label for="dimension_length" class="form-label">Dimension Length</label>
-                <input type="number" class = "form-control" name="dimension_length">
+                    <label for="dimension_length" class="form-label">Dimension Length</label>
+                    <input type="number" class = "form-control" name="dimension_length"/>
 
-                <label for="dimension_width" class="form-label">Dimension Width</label>
-                <input type="number" class = "form-control" name="dimension_width">
+                    <label for="dimension_width" class="form-label">Dimension Width</label>
+                    <input type="number" class = "form-control" name="dimension_width"/>
 
-                <label for="dimension_height" class="form-label">Dimension Height</label>
-                <input type="number" class = "form-control" name="dimension_height">
+                    <label for="dimension_height" class="form-label">Dimension Height</label>
+                    <input type="number" class = "form-control" name="dimension_height"/>
 
 
-                <input type="submit" class="mt-2 btn btn-primary" value="Create Label">
+                    <input type="submit" class="mt-2 btn btn-primary" value="Create Label">
+                </form>
             </div>
-            </form>
+        </div>
     </div>
+</body>
+</html>
 

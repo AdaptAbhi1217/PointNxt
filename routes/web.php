@@ -21,9 +21,9 @@ Route::get('/', function () {
 Route::get('/label',function(){
     return view('label');
 });
+
 Route::get('/products',[ProductController::class, 'insertProducts']);
 Route::get('/orders',[OrderController::class, 'insertOrders']);
 Route::get('/getProducts',[ProductController::class, 'getProducts']);
 Route::get('/getOrders',[OrderController::class, 'getOrders']);
 Route::get('/markShipped',[OrderController::class, 'markShipped']);
-Route::get('/sample',[OrderController::class, 'sample']);

@@ -12,29 +12,14 @@ use Illuminate\Support\Facades\Config;
 
 class OrderController extends Controller
 {
-    public function sample(){
-        $api_key = Config::get('services.shipstation.key');
-        $api_secret = Config::get('services.shipstation.secret');
-        $baseUrl = Config::get('services.shipstation.baseUrl');
-        $credentials = [
-            'api_key' => $api_key,
-            'api_secret' => $api_secret,
-            'baseUrl' => $baseUrl
-        ];
-        $carrier_code = Orders::where('orderId',131729855)->get();
-        echo $carrier_code[0]['carrierCode'];
-        foreach($carrier_code as $code){
-            print_r($code['carrierCode']);
-        }
-        echo "</br>";
-        $orders = Orders::where('orderStatus',"shipped")->get();
-        foreach($orders as $order){
-            print_r($order['orderId']);
-        }
-        echo "</br>";
-        print_r($credentials);
+    public function updateOrder() {
+
     }
 
+    public function createLabel(){
+
+    }
+    //Function to get Authentication Credentials for Shipstation
     public function getCredentials(){
         $api_key = Config::get('services.shipstation.key');
         $api_secret = Config::get('services.shipstation.secret');
@@ -46,6 +31,7 @@ class OrderController extends Controller
         ];
         return $credentials;
     }
+
     //Function to display Orders from Local Database.
     public function getOrders(){
         $orders = Orders::all();
@@ -359,9 +345,9 @@ class OrderController extends Controller
                     "addressVerified"=>$record['addressVerified']
                 ]);
                 // echo "Shipping Address has been updated</br>";
-                
-                
-                
+
+
+
                 //Updation of Billing Address table.
                 $record = $orders['billTo'];
                 DB::table('billing_address')->where('orderId',$orders['orderId'])->update([
@@ -380,9 +366,9 @@ class OrderController extends Controller
                     "addressVerified"=>$record['addressVerified']
                 ]);
                 // echo "Billing Address has been updated</br>";
-                
-                
-                
+
+
+
                 //Updation of OrderItems table.
                 if($orders['items'] != null){
                     $cnt = count($orders['items']);
@@ -433,12 +419,12 @@ class OrderController extends Controller
                             ]);
                             // echo "Order item has been updated</br>";
                         }
-                        
+
                     }
                 }
-                
-                
-                
+
+
+
                 //Updation of AdvancedOptions
                 if($orders['advancedOptions'] != null){
                     $record = $orders['advancedOptions'];
@@ -463,9 +449,9 @@ class OrderController extends Controller
                     ]);
                     // echo "Updation of AdvancedOptions got done</br>";
                 }
-                
-                
-                
+
+
+
                 //Updation of InsuranceOptions
                 if($orders['insuranceOptions'] != null){
                     $record = $orders['insuranceOptions'];
@@ -477,9 +463,9 @@ class OrderController extends Controller
                     ]);
                     // echo "Updation of Insurance Options got done</br>";
                 }
-                
-                
-                
+
+
+
                 //Updation of InternationalOptions and CustomsItems
                 if($orders['internationalOptions'] != null){
                     $record = $orders['internationalOptions'];
@@ -517,9 +503,9 @@ class OrderController extends Controller
                                 ]);
                                 // echo "Updation of CustomsItems table got done.</br>";
                             }
-                            
+
                         }
-                    
+
                     }
                 }
             }
@@ -530,10 +516,6 @@ class OrderController extends Controller
             'orders' => $orders,
             'items' => $orderItems
         ]);
-    }
-
-    public function createLabel(){
-
     }
 
     public function markShipped(Request $request){

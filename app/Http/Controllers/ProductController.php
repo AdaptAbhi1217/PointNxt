@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Config;
 class ProductController extends Controller
 {
 
+    //Function to get Authentication Credentials
     public function getCredentials(){
         $api_key = Config::get('services.shipstation.key');
         $api_secret = Config::get('services.shipstation.secret');
@@ -41,7 +42,7 @@ class ProductController extends Controller
             $prod = $products[$i];
             $results = Products::find($prod['productId']);
             if($results == null){
-                DB::table('products')->insert([  
+                DB::table('products')->insert([
                     'productId' => $prod['productId'],
                     'aliases' => $prod['aliases'],
                     'sku' => $prod['sku'],
@@ -153,7 +154,7 @@ class ProductController extends Controller
                             ]);
                             echo "New Tag added";
                         }
-                        
+
                     }
                 }
             }
